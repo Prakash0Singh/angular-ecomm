@@ -1,0 +1,178 @@
+<div class="container-fluid">
+    <div class="row pt-5 pb-5 main-conatiner" style="background-color: cadetblue;height: 100vh;">
+        <div class="col-6 mx-auto" >
+            <mat-card class="signupCard">
+                <p class="text-center fs-2 mb-3 mt-5">Sign Up</p>
+                <mat-card-content>
+                    <form [formGroup]="registerationForm">
+                    <div class="row mt-4">
+                        <div class="col-8 mx-auto">
+                            <mat-form-field appearance="outline" class="w-100" [hideRequiredMarker]="true">
+                                <mat-label for="name" class="form-label">Name</mat-label>
+                                <input
+                                  matInput
+                                  type="text"
+                                  #input
+                                  formControlName="name"
+                                />
+                                <mat-error
+                                  class="text-danger ms-2"
+                                  *ngIf="registerationForm.get('name')?.hasError('required')"
+                                >
+                                  *Required field</mat-error
+                                >
+                              </mat-form-field>
+                        </div>
+                        <div class="col-2 p-0">
+                          <input matTooltip="Upload Image" type="file" id="file" title="&nbsp;" formControlName="image" accept="image/*" (change)="preview($event)" />
+                          <br>
+                          <sup class="text-danger" *ngIf=" registerationForm.get('image')?.invalid && registerationForm.get('image')?.touched">*Image required</sup>
+                        </div>
+                        <div class="col-10 mx-auto">
+                            <mat-form-field appearance="outline" class="w-100" [hideRequiredMarker]="true">
+                                <mat-label for="email" class="form-label">Email</mat-label>
+                                <input
+                                  matInput
+                                  type="email"
+                                  #input
+                                  formControlName="email"
+                                />
+                                <mat-error
+                                  class="text-danger ms-2"
+                                  *ngIf="registerationForm.get('email')?.hasError('required')"
+                                >
+                                  *Required field</mat-error
+                                >
+                              </mat-form-field>
+                        </div>
+                        <div class="col-3 ms-auto">
+                            <mat-form-field appearance="outline" class="w-100" [hideRequiredMarker]="true">
+                                <mat-label >Age</mat-label>
+                                <input
+                                  matInput
+                                  type="text" 
+                                  maxlength="2"
+                                  formControlName="age"
+                                />
+                                <mat-error
+                                  class="text-danger ms-2"
+                                  *ngIf="registerationForm.get('age')?.hasError('required')"
+                                >
+                                  *Required field</mat-error
+                                >
+                                <mat-error
+                                  class="text-danger ms-2"
+                                  *ngIf="registerationForm.get('age')?.hasError('pattern')"
+                                >
+                                  *Please Enter Number Only</mat-error
+                                >
+                                <mat-error
+                                  class="text-danger ms-2"
+                                  *ngIf="registerationForm.get('age')?.hasError('maxlength')"
+                                >
+                                  *Maxmum 2 digits</mat-error
+                                >
+                              </mat-form-field>
+                        </div>
+                        <div class="col-6 mx-auto ">
+                            <mat-radio-group formControlName="gender">
+                                <mat-radio-button name="gender" value="male">Male</mat-radio-button>
+                                <mat-radio-button name="gender" value="female">Female</mat-radio-button>
+                                <mat-radio-button name="gender" value="others">Others</mat-radio-button>
+                              </mat-radio-group>    
+                        </div>
+                        <div class="col-10 mx-auto">
+                            <mat-form-field appearance="outline" class="w-100" [hideRequiredMarker]="true">
+                                <mat-label>Number</mat-label>
+                                <span matPrefix class="ms-3" > +91 &nbsp;</span>
+                                <input
+                                  matInput
+                                  type="text"
+                                  formControlName="number"
+                                />
+                                <mat-error
+                                  class="text-danger ms-2"
+                                  *ngIf="registerationForm.get('number')?.hasError('required')"
+                                >
+                                  *Required field</mat-error
+                                >
+                                <mat-error
+                                  class="text-danger ms-2"
+                                  *ngIf="registerationForm.get('number')?.hasError('pattern')"
+                                >
+                                  *Please Enter Numbers Only</mat-error
+                                >
+                                <mat-error
+                                  class="text-danger ms-2"
+                                  *ngIf="registerationForm.get('number')?.hasError('minlength')"
+                                >
+                                  *Minimum 10 digits</mat-error
+                                >
+                                <mat-error
+                                  class="text-danger ms-2"
+                                  *ngIf="registerationForm.get('number')?.hasError('maxlength')"
+                                >
+                                  *Maxmum 10 digits</mat-error
+                                >
+                              </mat-form-field>
+                        </div>
+                        <div class="col-10 mx-auto">
+                            <mat-form-field appearance="outline" class="w-100" [hideRequiredMarker]="true">
+                                <mat-label  class="form-label">Create Password</mat-label>
+                                <input
+                                  matInput
+                                  type="password"
+                                  formControlName="password"
+                                />
+                                <mat-error
+                                  class="text-danger ms-2"
+                                  *ngIf="registerationForm.get('password')?.hasError('required')"
+                                >
+                                  *Required field</mat-error
+                                >
+                              </mat-form-field>
+                        </div>
+                        <div class="col-10 mx-auto">
+                            <mat-form-field appearance="outline" class="w-100" [hideRequiredMarker]="true">
+                                <mat-label class="form-label">Confirm Password</mat-label>
+                                <input
+                                  matInput
+                                  type="password"
+                                  formControlName="confirm_password"
+                                />
+                                <mat-error
+                                  class="text-danger ms-2"
+                                  *ngIf="registerationForm.get('confirm_password')?.hasError('required') "
+                                >
+                                  *Required field</mat-error>
+                                  <mat-error
+                                  class="text-danger ms-2"
+                                  *ngIf="registerationForm.get('confirm_password')?.value != registerationForm.get('password')?.value"
+                                >
+                                  *Password Missmatching</mat-error>
+                              </mat-form-field>
+                        </div>
+                        <div class="col-10 mx-auto ">
+                            <sup class="text-danger" *ngIf="
+                            !(
+                                registerationForm.get('password')?.value ==
+                                registerationForm.get('confirm_password')?.value
+                            ) &&
+                            registerationForm.get('password')?.value != '' &&
+                            registerationForm.get('confirm_password')?.value != ''
+                          ">*PassWord & Confirm Password doesn't match</sup>
+                        </div>
+                        <div class="col-10 mx-auto">
+                          <p class="float-start mt-3 text-muted">Already Have Account <a routerLink="/login-page">Login</a></p>
+                          <button mat-raised-button color="primary" class="float-end mb-3"  [disabled]="
+                          registerationForm.invalid ||!(registerationForm.get('password')?.value ==registerationForm.get('confirm_password')?.value)"
+                              (click)="CreateNewUser()">Create User</button>
+                        </div>
+                    </div>
+                    </form>
+                  </mat-card-content>
+              </mat-card>
+        </div>
+    </div>
+    
+</div>

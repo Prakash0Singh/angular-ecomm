@@ -1,0 +1,26 @@
+.img-fluid{
+  height: 200px !important;
+}
+:host ::ng-deep .imageBox{
+  display: flex;
+  justify-content: center;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-card{
+  transition: transform 250ms;
+}
+.changeBack{
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(2.3px);
+-webkit-backdrop-filter: blur(2.3px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.example-card:hover{
+  cursor: pointer;
+  transform: translateY(-10px);
+}

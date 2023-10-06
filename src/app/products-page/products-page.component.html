@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+   <div class="col-12 mt-3 mb-3">
+    <h2 class="text-center">Our Product's</h2>
+   </div>
+   <div class=" col-6 col-md-4 col-lg-3 mb-5 mx-auto" *ngFor="let post of productDetail">
+    <mat-card class="example-card" >
+        <div class="imageBox">
+        <img mat-card-image src={{post.image}} alt="Product Image" class="product-images  img-fluid" height="200" width="200">
+        </div>
+        <mat-card-header>
+            <p class="d-inline-block text-center text-truncate fw-bold mx-auto" style="max-width: 150px;">
+                {{post.title}}
+              </p>
+        </mat-card-header>
+        <p class="fs-4 ms-3 mt-2">
+          {{post.price |currency:'INR':'symbol-narrow'}}
+      </p> 
+      <div class=" mt-2 mb-1">
+        <p class="text-end me-3" *ngIf="post.quantity>0">Quantity: {{post.quantity}}</p>             
+      </div>
+      <div class="d-flex justify-content-around mt-2 mb-3">
+        <div class="">
+          <!-- Quantity: - 1 + -->
+          <button *ngIf="post.isAdd" mat-raised-button color="primary" (click)="cartAdd(post)">Add to Cart</button>
+          <div *ngIf="!(post.isAdd)">
+            <div class="">
+              <!-- (click)="decrease(i)"   {{post.quantity}}-->
+              <button mat-icon-button  (click)="decrease(post)">
+                  <mat-icon>remove_circle</mat-icon>
+                </button>
+                <span class="fs-2">{{post.quantity}}</span>
+                <button mat-icon-button (click)="increase(post)">
+                  <mat-icon>add_circle</mat-icon>
+                </button>
+          </div>
+          </div>
+        </div>
+        <div class="">
+          <button mat-button mat-raised-button color="primary" (click)="Details(post.id)">View</button>
+        </div>
+      </div>
+      </mat-card>      
+   </div>
+  </div>
+</div>

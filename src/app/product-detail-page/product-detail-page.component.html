@@ -1,0 +1,40 @@
+
+<div class="container-fluid">
+    <div class="row mt-5 mx-md-4" >
+        <div class="col-sm-5">
+        <div class="d-flex justify-content-center border border-1">
+            <img src={{productDetail?.image}} alt="Product-image" class="img-fluid m-4" height="400" width="400">
+        </div>
+        </div>
+        <div class="col-sm-7 border border-1">
+            <p class="fs-6 ms-3 muted text-capitalize text-muted mt-3">{{productDetail?.category}}</p>
+            <p class="fs-3 ms-4 mt-2 text-wrap">{{productDetail?.title}}</p>
+            <p class="fs-6 ms-4 text-muted mt-2">{{productDetail?.description}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit commodi repellat facere ...more</p>
+            <p class="fs-3 ms-4 mt-3"><ngb-rating class="text-warning" [rate]=productDetail?.rating.rate [readonly]='true' [max]="5"></ngb-rating>
+                {{productDetail?.rating.rate}} <span class="fs-6 text-muted">[{{productDetail?.rating.count}}]</span>
+            </p>
+            <p class=" ms-4 fs-4 fw-bold">{{productDetail?.price|currency:'INR':'symbol-narrow'}}</p>
+            <p class="ms-3">Select Size Of Product</p>
+                <div class="btn-group ms-3" role="group" >
+                    <input type="radio" class="btn-check" name="vbtn-radio" value="small" id="vbtn-radio1" autocomplete="off" checked>
+                    <label class="btn btn-outline-dark" for="vbtn-radio1">S</label>
+                    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" value="medium" autocomplete="off">
+                    <label class="btn btn-outline-dark" for="vbtn-radio2">M</label>
+                    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" value="large" autocomplete="off">
+                    <label class="btn btn-outline-dark" for="vbtn-radio3">L</label>
+                    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio4" value="extralarge" autocomplete="off">
+                    <label class="btn btn-outline-dark" for="vbtn-radio4">XL</label>
+                  </div>
+            <br>
+            <button class="ms-3 mt-3 " *ngIf="showButton" mat-raised-button color="primary" (click)="cartAdd(productDetail)">Add to Cart</button>
+            <button class="ms-3 mt-3 " *ngIf="!showButton" mat-raised-button color="warn" (click)="cartRemove(productDetail)">Remove from Cart</button>
+            <br>
+            <div class="d-flex justify-content-center mt-4">
+                <button class="btn btn-lg "><i class="bi bi-twitter"></i></button>
+                <button class="btn btn-lg "><i class="bi bi-facebook"></i></button>
+                <button class="btn btn-lg "><i class="bi bi-instagram"></i></button>
+                <button class="btn btn-lg "><i class="bi bi-twitch"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

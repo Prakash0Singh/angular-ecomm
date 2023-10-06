@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <div class="row pt-5" style="background-color: cadetblue;height: 100vh;">
+        <div class="col-6 mx-auto">
+            <div class="card">
+            <ng-otp-input class=""  (onInputChange)="onOtpChange($event)"  [config]="{length:6}"></ng-otp-input>      
+        </div>
+        <div class="" *ngIf="countdownTimmer>0">
+            <p class="text-center text-light fs-5 mt-4">OTP Valid till {{countdownTimmer}} second's</p>
+        </div>
+    </div>
+    
+    </div>
+</div>

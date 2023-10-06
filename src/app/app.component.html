@@ -1,0 +1,48 @@
+<nav class="sticky-top ">
+    <p class="m-0">
+        <mat-toolbar class="changeBack">
+          <span (click)="homepage()" class="homeButton">My Application</span>
+          <span class="example-spacer"></span>
+          <div *ngIf="_fakeProduct.value  == false ">
+            <button   mat-icon-button matTooltip="Register User" aria-label="Create New Account" (click)="registerUser()">
+              <mat-icon>person_add</mat-icon>
+          </button>
+            <button  mat-icon-button matTooltip="Login User" aria-label="Login User" (click)="loginUser()">
+              <mat-icon>account_circle</mat-icon>
+            </button>
+          </div>
+          <div *ngIf="_fakeProduct.value ">
+            <button  mat-icon-button matTooltip="Cart" aria-label="Cart" class="position-relative"  (click)="cartpage()">
+              <mat-icon>shopping_cart</mat-icon>
+              <span class="position-absolute translate-middle badge rounded-pill bg-danger" style="font-size: 10px;" *ngIf="_fakeProduct.cartItem" >
+                {{_fakeProduct.cartItem ? _fakeProduct.cartItem : '0'}}
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </button>
+            <button  mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>settings</mat-icon>
+          </button>
+            <mat-menu  class="mt-2" #menu="matMenu">
+              <button mat-menu-item routerLink="/user-pannel">
+                <mat-icon>account_box</mat-icon>
+                <span>Account Settings</span>
+              </button>
+              <button mat-menu-item routerLink="/order-page">
+                <mat-icon>shopping_basket</mat-icon>
+                <span>My Orders</span>
+              </button>
+              <button mat-menu-item (click)="userLogout()">
+                <mat-icon>logout</mat-icon>
+                <span>Logout</span>
+              </button>
+            </mat-menu>
+            
+          </div>
+        </mat-toolbar>
+         
+      </p>
+  </nav>
+
+  
+
+<router-outlet></router-outlet>
